@@ -1,0 +1,32 @@
+{
+  "env": {
+    "development": {
+      "presets": ["next/babel"],
+      "plugins": [
+        [
+          "styled-components",
+          {
+            "ssr": true,
+            "transpileTemplateLiterals": true,
+            "minify": false,
+            "displayName": true
+          }
+        ]
+      ]
+    },
+    "production": {
+      "presets": ["next/babel"],
+      "plugins": [
+        [
+          "styled-components",
+          {
+            "ssr": true,
+            "transpileTemplateLiterals": true,
+            "minify": true,
+            "displayName": false
+          }
+        ]
+      ]
+    }
+  }
+}
