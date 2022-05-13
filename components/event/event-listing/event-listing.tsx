@@ -1,14 +1,17 @@
-import Image from "next/image";
 import * as React from "react";
 import { EventAPIType, QueryType } from "../../../types";
-import Container from "../../layout/container/container";
 import dayjs from "dayjs";
-import { HeaderImage, EventContent, EventDate, EventDoors } from "./styles";
+import {
+  EventContainer,
+  HeaderImage,
+  EventContent,
+  ArtistContent,
+} from "./styles";
 import { useQuery } from "react-query";
 import { getEvent } from "../../../queries/get-event";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import ArtistCard from "./artist-card";
+import ContentBlock from "../../layout/content-block/content-block";
 
 interface event {
   initialData: EventAPIType[];
@@ -31,33 +34,32 @@ const EventListing = ({ initialData = [] }: event) => {
   const event = React.useMemo(() => data?.results ?? [], [data?.results]);
 
   return (
-    <Container>
+    <EventContainer>
       <HeaderImage src={event?.largeimageurl ?? ""} />
       <EventContent>
         <h1>{event?.eventname}</h1>
-        <EventDate>{dayjs(event?.date).format("dddd D MMM")}</EventDate>
-        <p>{event?.description}</p>
-        <p>{event?.entryprice}</p>
-        <EventDoors>
+        <p>{dayjs(event?.date).format("dddd D MMM")}</p>
+        <ContentBlock paragraph={event?.description} />
+        {event?.entryprice && <p>{event?.entryprice}</p>}
+        <p>
           <span>Doors open @</span> {event?.openingtimes?.doorsopen}
-        </EventDoors>
-        <>
-          <h2>Featuring</h2>
-          {event?.artists?.map((artist: any, i: number) =>
-            artist?.artistid ? (
-              <Link
-                key={artist?.artistid ?? i}
-                href={`/artists/${artist?.artistid}`}
-              >
-                <ArtistCard name={artist?.name} img={artist?.image} />
-              </Link>
-            ) : (
-              <p>No artist Id</p>
-            )
-          )}
-        </>
+        </p>
       </EventContent>
-    </Container>
+      <ArtistContent>
+        {event?.artists?.map((artist: any, i: number) => {
+          return artist?.artistid ? (
+            <ArtistCard
+              key={artist?.artistid ?? i}
+              href={`/artists/${artist?.artistid}`}
+              name={artist?.name}
+              img={artist?.image}
+            />
+          ) : (
+            <p>No artist Id</p>
+          );
+        })}
+      </ArtistContent>
+    </EventContainer>
   );
 };
 

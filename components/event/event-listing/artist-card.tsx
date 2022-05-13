@@ -1,17 +1,20 @@
+import Link from "next/link";
 import * as React from "react";
 import { ArtistCardContainer } from "./styles";
 
 interface Props {
   name?: string;
   img?: string;
+  href: string;
 }
 
-const ArtistCard = ({ name, img }: Props) => {
+const ArtistCard = ({ name, img, href }: Props) => {
   return (
-    <ArtistCardContainer>
-      <p>{name}</p>
-      <img src={img} alt={name} />
-    </ArtistCardContainer>
+    <Link href={href}>
+      <ArtistCardContainer src={img}>
+        <p>{name}</p>
+      </ArtistCardContainer>
+    </Link>
   );
 };
 
