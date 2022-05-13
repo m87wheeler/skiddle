@@ -13,7 +13,7 @@ const Animate = ({
   children,
   offsetY = 4,
   triggerOnce = true,
-  threshold = 0.15,
+  threshold = 0.05,
   ...props
 }: Props) => {
   const { ref, inView } = useInView({ triggerOnce, threshold });
