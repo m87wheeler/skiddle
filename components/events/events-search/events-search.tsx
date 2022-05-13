@@ -16,6 +16,15 @@ const EventsSearch = ({
   handleSearch,
   handleReset,
 }: Props) => {
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    function handleKeypress(e: KeyboardEvent) {
+      if (e.code === "Enter") handleSearch();
+    }
+    window.addEventListener("keydown", handleKeypress);
+    return () => window.removeEventListener("keydown", handleKeypress);
+  }, [handleSearch]);
+
   return (
     <EventsSearchContainer>
       <Input
