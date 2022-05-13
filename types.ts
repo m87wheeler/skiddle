@@ -108,6 +108,7 @@ export interface ITheme {
   ui: {
     shadow: string;
     shadow2?: string;
+    shadowHover?: string;
   };
   breakpoints: {
     xs: number;

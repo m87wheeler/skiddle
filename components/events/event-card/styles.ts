@@ -8,6 +8,12 @@ export const EventCardContainer = styled.div`
   box-shadow: ${theme.ui.shadow};
   border-radius: 0.5rem;
   overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 300ms ease-in-out;
+
+  &:hover {
+    box-shadow: ${theme.ui.shadowHover};
+  }
 `;
 
 export const EventImage = styled.div<{ src: string }>`

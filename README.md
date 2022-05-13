@@ -4,6 +4,8 @@ Thanks for taking the time to take a look at the code for my Skiddle app!
 
 Before proceeding, please note that `NEXT_PUBLIC_SKIDDLE_KEY` is a mandatory environment variable.
 
+You can also see a build version of the app hosted on [Netlify](skiddle.netlify.app)
+
 ### Setup Development
 
 ```bash

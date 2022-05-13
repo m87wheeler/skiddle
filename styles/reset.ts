@@ -14,4 +14,8 @@ html, body, #__next {
     height: 100%;
     font-family: ${theme.font.family.sans};
 }
+
+a {
+    cursor: pointer;
+}
 `;
