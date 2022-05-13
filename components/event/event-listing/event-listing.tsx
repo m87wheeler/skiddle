@@ -3,11 +3,12 @@ import * as React from "react";
 import { EventAPIType, QueryType } from "../../../types";
 import Container from "../../layout/container/container";
 import dayjs from "dayjs";
-import { HeaderImage, EventContent } from "./styles";
+import { HeaderImage, EventContent, EventDate, EventDoors } from "./styles";
 import { useQuery } from "react-query";
 import { getEvent } from "../../../queries/get-event";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import ArtistCard from "./artist-card";
 
 interface event {
   initialData: EventAPIType[];
@@ -34,27 +35,27 @@ const EventListing = ({ initialData = [] }: event) => {
       <HeaderImage src={event?.largeimageurl ?? ""} />
       <EventContent>
         <h1>{event?.eventname}</h1>
-        <p>{dayjs(event?.date).format("dddd D MMM")}</p>
+        <EventDate>{dayjs(event?.date).format("dddd D MMM")}</EventDate>
         <p>{event?.description}</p>
-        <p>£{event?.entryprice}</p>
-        <p>{event?.openingtimes?.doorsopen}</p>
-        <div>
+        <p>{event?.entryprice}</p>
+        <EventDoors>
+          <span>Doors open @</span> {event?.openingtimes?.doorsopen}
+        </EventDoors>
+        <>
+          <h2>Featuring</h2>
           {event?.artists?.map((artist: any, i: number) =>
             artist?.artistid ? (
               <Link
                 key={artist?.artistid ?? i}
                 href={`/artists/${artist?.artistid}`}
               >
-                <div>
-                  <p>{artist?.name}</p>
-                  <img src={artist?.image} alt={artist?.name} />
-                </div>
+                <ArtistCard name={artist?.name} img={artist?.image} />
               </Link>
             ) : (
               <p>No artist Id</p>
             )
           )}
-        </div>
+        </>
       </EventContent>
     </Container>
   );
