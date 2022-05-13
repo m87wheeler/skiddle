@@ -7,6 +7,10 @@ export const HeaderImage = styled.div<{ src: string }>`
   background-image: ${({ src }) => `url("${src}")`};
   background-size: cover;
   background-position: center;
+
+  @media only screen and (min-width: ${theme.breakpoints.md}px) {
+    max-width: 30rem;
+  }
 `;
 
 export const ArtistContent = styled.div`
@@ -24,9 +28,4 @@ export const ArtistContent = styled.div`
   border-top-left-radius: 1rem;
   background-color: ${theme.palette.primary.contrast};
   box-shadow: ${theme.ui.shadow2};
-
-  img {
-    width: 100%;
-    max-width: calc(100vw - 3rem);
-  }
 `;
