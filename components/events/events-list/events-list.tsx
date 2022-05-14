@@ -31,14 +31,16 @@ const EventsList = ({ events, handlePage, loading, ...props }: Props) => {
                 </li>
               ))}
           </EventsListItems>
-          <ButtonGroup>
-            <Button invert onClick={handlePage(-1)}>
-              Prev
-            </Button>
-            <Button invert onClick={handlePage(1)}>
-              Next
-            </Button>
-          </ButtonGroup>
+          {events?.length > 20 && (
+            <ButtonGroup>
+              <Button invert onClick={handlePage(-1)}>
+                Prev
+              </Button>
+              <Button invert onClick={handlePage(1)}>
+                Next
+              </Button>
+            </ButtonGroup>
+          )}
         </>
       )}
     </EventsListContainer>
