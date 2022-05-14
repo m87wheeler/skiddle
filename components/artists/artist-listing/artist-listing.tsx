@@ -10,6 +10,7 @@ import ContentBlock from "../../layout/content-block/content-block";
 import Container from "../../layout/container/container";
 import Liked from "../../ui/liked/liked";
 import { HeaderImage, ArtistContent } from "./styles";
+import GoBack from "../../ui/go-back/go-back";
 
 interface Props {
   initialData?: any;
@@ -33,6 +34,7 @@ const ArtistListing = ({ initialData }: Props) => {
 
   return (
     <Container>
+      <GoBack />
       <HeaderImage src={artist?.imageurl ?? ""} />
       <ArtistContent>
         <h1>{artist?.name}</h1>

@@ -12,6 +12,7 @@ import { getEvent } from "../../../queries/get-event";
 import { useRouter } from "next/router";
 import ArtistCard from "./artist-card";
 import ContentBlock from "../../layout/content-block/content-block";
+import GoBack from "../../ui/go-back/go-back";
 
 interface event {
   initialData: EventAPIType[];
@@ -35,6 +36,7 @@ const EventListing = ({ initialData = [] }: event) => {
 
   return (
     <EventContainer>
+      <GoBack />
       <HeaderImage src={event?.largeimageurl ?? ""} />
       <EventContent>
         <h1>{event?.eventname}</h1>
