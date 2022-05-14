@@ -11,7 +11,7 @@ export const ToTopContainer = styled.button<{ variant: VariantType }>`
   height: 3.5rem;
   font-size: 1.25rem;
   color: ${({ variant }) => theme.palette[variant]._};
-  background-color: transparent;
+  background-color: ${({ variant }) => theme.palette[variant].contrast};
   border: ${({ variant }) => `.2rem solid ${theme.palette[variant]._}`};
   border-radius: 50%;
   cursor: pointer;
