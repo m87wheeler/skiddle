@@ -12,8 +12,8 @@ const Logo = ({ children, ...props }: Props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      height={`var(--header-height)`}
-      width="auto"
+      height={48}
+      width="100%"
       viewBox="0 0 1440 557.33331"
       {...props}
     >

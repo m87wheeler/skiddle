@@ -1,4 +1,5 @@
 import * as React from "react";
+import { usePage } from "../../../hooks/use-page";
 import { useQuery } from "react-query";
 import { getEvents } from "../../../queries/get-events";
 import { EventAPIType, QueryType } from "../../../types";
@@ -12,9 +13,10 @@ interface Props {
 }
 
 const EventsSection = ({ initialData = [] }: Props) => {
-  const [page, setPage] = React.useState(0);
+  const [maxPage, setMaxPage] = React.useState(1);
   const [searchTerm, setSearchTerm] = React.useState("");
   const [keyword, setKeyword] = React.useState("");
+  const { page, setPage } = usePage(maxPage);
 
   const { data, error, isFetching } = useQuery(
     [QueryType.events, page, keyword],
@@ -22,17 +24,10 @@ const EventsSection = ({ initialData = [] }: Props) => {
     { initialData }
   );
 
-  // Handle pagination
-  const handlePage = React.useCallback(
-    (i: number) => () => {
-      setPage((n) => {
-        if (n + i < 0) return n;
-        if (n + i > 100) return n;
-        return n + i;
-      });
-    },
-    []
-  );
+  // Set maximum page offset based on data returned
+  React.useEffect(() => {
+    setMaxPage((state) => Number(data?.totalcount / data?.pagecount ?? state));
+  }, [data]);
 
   // Handle input change for search bar
   const handleChange = React.useCallback(
@@ -68,7 +63,8 @@ const EventsSection = ({ initialData = [] }: Props) => {
       ) : (
         <EventsList
           events={data?.results}
-          handlePage={handlePage}
+          handlePage={setPage}
+          // handlePage={handlePage}
           loading={isFetching}
         />
       )}

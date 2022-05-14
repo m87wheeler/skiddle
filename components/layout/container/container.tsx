@@ -5,8 +5,9 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const Container = ({ children, ...props }: Props) => {
-  return <ContainerWrapper {...props}>{children}</ContainerWrapper>;
-};
+const Container = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
+  return <ContainerWrapper ref={ref}>{props.children}</ContainerWrapper>;
+});
+Container.displayName = "Container";
 
 export default Container;
