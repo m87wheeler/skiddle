@@ -4,6 +4,10 @@ export enum QueryType {
   events = "events",
 }
 
+export enum StorageKeys {
+  page = "skiddle_user_page",
+}
+
 export type EventAPIType = {
   id?: string;
   listingid?: string;
