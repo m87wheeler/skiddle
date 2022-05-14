@@ -21,7 +21,7 @@ const EventsSection = ({ initialData = [] }: Props) => {
   const { data, error, isFetching } = useQuery(
     [QueryType.events, page, keyword],
     () => getEvents(page, keyword),
-    { initialData }
+    { initialData, refetchOnWindowFocus: false, refetchOnMount: true }
   );
 
   // Set maximum page offset based on data returned

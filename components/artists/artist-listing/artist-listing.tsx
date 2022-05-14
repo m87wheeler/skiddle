@@ -26,7 +26,7 @@ const ArtistListing = ({ initialData }: Props) => {
   const { status, data, error, isFetching, isPreviousData } = useQuery(
     [QueryType.artist],
     () => getArtist(routeId),
-    { initialData }
+    { initialData, refetchOnWindowFocus: false, refetchOnMount: true }
   );
 
   const artist: any = React.useMemo(() => data?.results ?? [], [data?.results]);

@@ -28,7 +28,7 @@ const EventListing = ({ initialData = [] }: event) => {
   const { status, data, error, isFetching, isPreviousData } = useQuery(
     [QueryType.event],
     () => getEvent(routeId),
-    { initialData }
+    { initialData, refetchOnWindowFocus: false, refetchOnMount: true }
   );
 
   const event = React.useMemo(() => data?.results ?? [], [data?.results]);
