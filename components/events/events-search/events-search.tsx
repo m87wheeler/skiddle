@@ -18,8 +18,9 @@ const EventsSearch = ({
 }: Props) => {
   React.useEffect(() => {
     if (typeof window === "undefined") return;
+
     function handleKeypress(e: KeyboardEvent) {
-      if (e.code === "Enter") handleSearch();
+      if (e.code === "Enter" || e.key === "Enter") handleSearch();
     }
     window.addEventListener("keydown", handleKeypress);
     return () => window.removeEventListener("keydown", handleKeypress);
