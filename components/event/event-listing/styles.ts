@@ -16,6 +16,7 @@ export const EventContent = styled.div`
   gap: 1rem;
   padding: 1rem;
   max-width: ${`${theme.breakpoints.maxWidth}px`};
+  background-color: ${theme.palette.primary.contrast};
 
   h1 {
     color: ${theme.palette.primary._};
