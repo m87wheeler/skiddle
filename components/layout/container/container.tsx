@@ -6,7 +6,11 @@ interface Props {
 }
 
 const Container = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
-  return <ContainerWrapper ref={ref}>{props.children}</ContainerWrapper>;
+  return (
+    <ContainerWrapper ref={ref} {...props}>
+      {props.children}
+    </ContainerWrapper>
+  );
 });
 Container.displayName = "Container";
 

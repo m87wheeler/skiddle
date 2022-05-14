@@ -30,6 +30,7 @@ export const ArtistContent = styled.div`
   flex-flow: row nowrap;
   gap: 1rem;
   padding: 1rem;
+  border-top: 0.25rem solid ${theme.palette.primary._};
   overflow-x: auto;
 `;
 
@@ -102,6 +103,10 @@ export const EventContainer = styled(Container)`
 
   @media only screen and (min-width: ${theme.breakpoints.md}px) {
     grid-template-columns: repeat(3, 1fr);
+
+    ${EventContent} {
+      grid-column: auto / span 2;
+    }
 
     ${ArtistContent} {
       grid-column: 1 / 4;

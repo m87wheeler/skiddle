@@ -47,6 +47,7 @@ const EventListing = ({ initialData = [] }: event) => {
           <span>Doors open @</span> {event?.openingtimes?.doorsopen}
         </p>
       </EventContent>
+
       <ArtistContent>
         {event?.artists?.map((artist: any, i: number) => {
           return artist?.artistid ? (
