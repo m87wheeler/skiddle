@@ -1,5 +1,6 @@
 import * as React from "react";
 import Breadcrumbs from "../../ui/breadcrumbs/breadcrumbs";
+import ToTop from "../../ui/to-top/to-top";
 import Header from "../header/header";
 import { LayoutContainer } from "./styles";
 
@@ -14,6 +15,7 @@ const Page = ({ children }: Props) => {
       <main>
         <Breadcrumbs />
         {children}
+        <ToTop />
       </main>
     </LayoutContainer>
   );

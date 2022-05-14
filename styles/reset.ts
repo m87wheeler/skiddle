@@ -13,6 +13,7 @@ html, body, #__next {
     width: 100%;
     height: 100%;
     font-family: ${theme.font.family.sans};
+    scroll-behavior: smooth;
 }
 
 a {
