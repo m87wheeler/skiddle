@@ -3,6 +3,7 @@ import ArtistListing from "../../components/artists/artist-listing/artist-listin
 import { getArtist } from "../../queries/get-artist";
 import { StyleContext } from "../../context/style-context";
 import Page from "../../components/layout/page/page";
+import Head from "../../components/layout/head/head";
 
 interface Props {
   artist: any;
@@ -14,6 +15,10 @@ const EventPage = ({ artist }: Props) => {
 
   return (
     <Page>
+      <Head
+        title={artist?.results?.name}
+        description={artist?.results?.description}
+      />
       <ArtistListing initialData={artist} />
     </Page>
   );

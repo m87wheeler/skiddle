@@ -3,6 +3,7 @@ import { StyleContext } from "../../context/style-context";
 import EventListing from "../../components/event/event-listing/event-listing";
 import Page from "../../components/layout/page/page";
 import { getEvent } from "../../queries/get-event";
+import Head from "../../components/layout/head/head";
 
 interface Props {
   event: any;
@@ -14,6 +15,10 @@ const EventPage = ({ event }: Props) => {
 
   return (
     <Page>
+      <Head
+        title={event?.results?.eventname}
+        description={event?.results?.description}
+      />
       <EventListing initialData={event} />
     </Page>
   );

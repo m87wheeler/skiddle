@@ -3,6 +3,7 @@ import { StyleContext } from "../context/style-context";
 import EventsSection from "../components/events/events-section/events-section";
 import Page from "../components/layout/page/page";
 import { getEvents } from "../queries/get-events";
+import Head from "../components/layout/head/head";
 
 type Props = {
   events: any;
@@ -14,6 +15,10 @@ const Home = ({ events }: Props) => {
 
   return (
     <Page>
+      <Head
+        title="Discover Great Events"
+        description="The leading Ticket Sales, Clubs Listings, Events &amp; What's On Guide website in the UK.  Skiddle: discover great events"
+      />
       <EventsSection initialData={events} />
     </Page>
   );
