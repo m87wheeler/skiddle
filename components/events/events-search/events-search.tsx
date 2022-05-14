@@ -1,3 +1,4 @@
+import Link from "next/link";
 import * as React from "react";
 import Button, { ButtonGroup } from "../../form/button/button";
 import Input from "../../form/input/input";
@@ -38,9 +39,11 @@ const EventsSearch = ({
         <Button variant="white" onClick={handleSearch}>
           Search
         </Button>
-        <Button variant="primary" border onClick={handleReset}>
-          Reset
-        </Button>
+        <Link href="/">
+          <Button variant="primary" border onClick={handleReset}>
+            Reset
+          </Button>
+        </Link>
       </ButtonGroup>
     </EventsSearchContainer>
   );
