@@ -10,6 +10,7 @@ const Header = () => {
 
   const handleGoBack = React.useCallback(() => {
     sessionStorage.setItem(StorageKeys.page, `${0}`);
+    sessionStorage.removeItem(StorageKeys.search);
   }, []);
 
   return (

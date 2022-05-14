@@ -6,6 +6,7 @@ export enum QueryType {
 
 export enum StorageKeys {
   page = "skiddle_user_page",
+  search = "skiddle_user_search",
 }
 
 export type EventAPIType = {
