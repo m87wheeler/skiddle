@@ -27,3 +27,7 @@ cp .env.example .env
 yarn build
 yarn start
 ```
+
+### Netlify Build
+
+Pushing any changes to the main branch will trigger a rebuild on [Netlify](skiddle.netlify.app)
